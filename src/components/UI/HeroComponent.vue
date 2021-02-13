@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async createRoom() {
-      const response = await axios.get("http://localhost:3000");
+      const response = await axios.get("https://velocity-meet.herokuapp.com");
       const newRoomId = await response.data.roomId;
       this.createdRoomId = newRoomId;
     },

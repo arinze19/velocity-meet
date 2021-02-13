@@ -54,7 +54,7 @@ export default {
   },
 
   created() {
-    this.socket = io("http://localhost:3000");
+    this.socket = io("https://velocity-meet.herokuapp.com");
   },
 
   mounted() {
