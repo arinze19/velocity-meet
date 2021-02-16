@@ -1,8 +1,12 @@
 <template>
-  <p>Here is your <strong>room link</strong>: </p>
-  <br>
+  <p>Here is your <strong>room link</strong>:</p>
+  <br />
   <div class="room-link-container">
-    <i class="bi bi-clipboard" @click="copyClip(createdRoomId)" v-if="clipboardIsEmpty"></i>
+    <i
+      class="bi bi-clipboard"
+      @click="copyClip(createdRoomId)"
+      v-if="clipboardIsEmpty"
+    ></i>
     <i class="bi bi-check2" v-else></i>
     <p>{{ createdRoomId }}</p>
   </div>
@@ -10,10 +14,10 @@
 
 <script>
 export default {
-  props: [ 'createdRoomId'],
+  props: ["createdRoomId"],
   data() {
     return {
-      clipboardIsEmpty: true
+      clipboardIsEmpty: true,
     };
   },
   methods: {
@@ -28,7 +32,7 @@ export default {
         this.clipboardIsEmpty = true;
       }, 4000);
     },
-  }
+  },
 };
 </script>
 
@@ -59,10 +63,10 @@ export default {
   color: #00a900;
 }
 
-
-@media(max-width: 768px) {
-    .room-link-container {
-        margin: 0 auto;
-    }
+@media (max-width: 768px) {
+  .room-link-container {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 </style>

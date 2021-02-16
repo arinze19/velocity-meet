@@ -8,13 +8,17 @@
     </p>
 
     <div class="action">
-      <button @click="createRoom"> Create A Meeting</button>
+      <button @click="createRoom">
+        <base-spinner v-if="isLoading"></base-spinner>
+        <span v-else>Create A Meeting </span>
+      </button>
+
       <input
         type="text"
         placeholder="paste a room link"
         v-model.trim="roomId"
       />
-      <span v-if="roomIsNotValid" @click="joinRoom">Join</span>
+      <span v-if="roomIsNotValid" @click="joinRoom" class="join">Join</span>
     </div>
 
     <room-link
@@ -27,24 +31,26 @@
 
 <script>
 import RoomLink from "../UI/RoomLink.vue";
-import axios    from "axios";
-
+import BaseSpinner from "../UI/BaseSpinner.vue";
+import axios from "axios";
 
 export default {
-  components: { RoomLink },
+  components: { RoomLink, BaseSpinner },
   data() {
     return {
       roomId: "",
-      loading: false,
+      isLoading: false,
       socket: {},
       createdRoomId: null,
     };
   },
   methods: {
     async createRoom() {
+      this.isLoading = true
       const response = await axios.get("https://velocity-meet.herokuapp.com");
       const newRoomId = await response.data.roomId;
       this.createdRoomId = newRoomId;
+      this.isLoading = false
     },
     joinRoom() {
       this.$router.push(`/rooms/${this.roomId}`);
@@ -110,7 +116,7 @@ h2 {
   border: 1px solid black;
 }
 
-.action span {
+.join {
   cursor: pointer;
   letter-spacing: 1.5px;
 }

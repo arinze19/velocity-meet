@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <button class="leave-room" @click="leaveRoom">✌️ <span>Leave Quietly</span></button>
+    <button class="leave-room" @click="leaveRoom">✌️ <span>Leave quietly</span></button>
   </footer>
 </template>
 

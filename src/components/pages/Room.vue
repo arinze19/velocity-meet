@@ -92,10 +92,10 @@ export default {
 }
 
 .video-grid {
-  padding: 30px;
+  padding: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: start;
   max-width: 1440px;
@@ -117,7 +117,7 @@ video {
 
 @media (max-width: 767px) {
   .video-container {
-    width: 90%;
+    width: 100%;
   }
 
   .video-grid {
