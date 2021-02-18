@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  emits: ['leave-room'],
   data() {
     return {
       audioIsOn: true,
@@ -34,6 +35,7 @@ export default {
       this.videoIsOn = !this.videoIsOn;
     },
     leaveRoom() {
+      this.$emit('leave-room')
       this.$router.replace('/')
     }
   },

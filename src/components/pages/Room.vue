@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <the-footer></the-footer>
+    <the-footer @leave-room="leaveRoom"></the-footer>
   </div>
 </template>
 
@@ -37,25 +37,34 @@ export default {
       call.on("stream", (userVideoStream) => {
         this.roomMembersStream.push(userVideoStream);
       });
+
+      call.on("close", () => {
+        this.roomMembersStream.filter((id) => {
+          id !== userId;
+        });
+      });
     },
+
     answerCall(stream) {
       this.peer.on("call", (call) => {
         call.answer(stream);
       });
     },
-    toggleAudioMute(muteStatus) {
-      this.audioIsNotMute = muteStatus;
-      console.log(this.audioIsNotMute);
-    },
-    toggleVideoMute(muteStatus) {
-      this.videoIsNotMute = muteStatus;
-      console.log(this.videoIsNotMute);
-    },
+
+    leaveRoom() {
+      const stream = this.roomMembersStream[0]
+      stream.getTracks().forEach((track) => {
+        if(track.readyState == 'live') {
+          track.stop()
+        }
+      })
+    }
   },
 
   created() {
     this.socket = io("https://velocity-meet.herokuapp.com");
   },
+
 
   mounted() {
     this.peer = new Peer();
@@ -76,6 +85,8 @@ export default {
             this.connectToNewUser(userId, stream);
           });
         });
+
+        // this.socket.on('user-disconnected', () => console.log('hello') )
     });
 
     this.answerCall(this.userStream);
