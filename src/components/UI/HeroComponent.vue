@@ -46,11 +46,11 @@ export default {
   },
   methods: {
     async createRoom() {
-      this.isLoading = true
-      const response = await axios.get("https://velocity-meet.herokuapp.com");
-      const newRoomId = await response.data.roomId;
+      this.isLoading   = true
+      const response   = await axios.get("https://velocity-meet.herokuapp.com");
+      const newRoomId  = await response.data.roomId;
       this.createdRoomId = newRoomId;
-      this.isLoading = false
+      this.isLoading   = false
     },
     joinRoom() {
       this.$router.push(`/rooms/${this.roomId}`);

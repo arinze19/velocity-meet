@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  emits: ['leave-room'],
+  emits: ['leave-room', 'media-status'],
   data() {
     return {
       audioIsOn: true,
@@ -30,9 +30,11 @@ export default {
   methods: {
     toggleAudio() {
       this.audioIsOn = !this.audioIsOn;
+      this.$emit('media-status', 'audio')
     },
     toggleVideo() {
       this.videoIsOn = !this.videoIsOn;
+      this.$emit('media-status', 'video')
     },
     leaveRoom() {
       this.$emit('leave-room')

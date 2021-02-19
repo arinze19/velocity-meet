@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <the-footer @leave-room="leaveRoom"></the-footer>
+    <the-footer @leave-room="leaveRoom" @mediaStatus="streamMediaStatus"></the-footer>
   </div>
 </template>
 
@@ -51,6 +51,15 @@ export default {
       });
     },
 
+    streamMediaStatus(media) {
+      const stream = this.roomMembersStream[0]
+      stream.getTracks().forEach(track => {
+        if(track.readyState == 'live' && track.kind == media) {
+          track.enabled = !track.enabled
+        }
+      })
+    },
+
     leaveRoom() {
       const stream = this.roomMembersStream[0]
       stream.getTracks().forEach((track) => {
@@ -85,7 +94,6 @@ export default {
             this.connectToNewUser(userId, stream);
           });
         });
-
         // this.socket.on('user-disconnected', () => console.log('hello') )
     });
 
