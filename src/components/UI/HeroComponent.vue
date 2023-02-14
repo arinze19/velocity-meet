@@ -7,7 +7,7 @@
       quality video meetings platform. Free Now, Free Forever.
     </p> -->
 
-    <h2>Quality video support for customer successes professionals.</h2>
+    <h2>Quality video support for customer success professionals.</h2>
     <br />
     <p>
       We have built on the issues from the pandemic to provide you with a unique
