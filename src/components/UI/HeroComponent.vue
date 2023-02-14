@@ -1,10 +1,17 @@
 <template>
   <div class="main">
-    <h2>Quality video meetings for next generation remote startups.</h2>
+    <!-- <h2>Quality video meetings for next generation remote startups.</h2>
     <br />
     <p>
       We have built on the issues from the pandemic to provide you with a unique
       quality video meetings platform. Free Now, Free Forever.
+    </p> -->
+
+    <h2>Quality video support for customer successes professionals.</h2>
+    <br />
+    <p>
+      We have built on the issues from the pandemic to provide you with a unique
+      quality video support platform. Free Now, Free Forever.
     </p>
 
     <div class="action">
